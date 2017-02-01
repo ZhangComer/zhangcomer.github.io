@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://www.rengzn.com/scraperone.html</loc>
+    <lastmod>2017-02-01T08:17:19.028Z</lastmod>
+    <data>
+        <display>
+        <title>node.js 使用superagent与cheerio写爬虫，福利贴</title>
+        <pubTime>2017-01-31T20:30:07.000Z</pubTime>
+        
+        <tag>爬虫</tag>
+         
+         
+           
+             
+              <breadCrumb title="node.js" url="http://www.rengzn.com/categories/node-js/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.rengzn.com/hello2017.html</loc>
     <lastmod>2017-01-26T02:48:23.619Z</lastmod>
     <data>

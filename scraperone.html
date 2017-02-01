@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="黄金时代,王小波,侠僧探案传奇,app,nodejs" />
+  <meta name="keywords" content="node.js, superagent, cheerio, scraper, 爬虫, 妹子, 煎蛋网, ooxx" />
 
 
 
@@ -84,19 +84,28 @@
 
 
 
-<meta name="description" content="&amp;emsp;2016年底的时候开始做一些网站相关的工作。大学毕业三年多了，一直在做移动端的app，此时接触js，有一种从孤岛回到大陆的感觉。也因此建立了这个博客。以后我会将平时的一些想法和工作纪录到这里。由于我天生三分钟热度的性格，可以预见此博客前景叵测。但希望总是美好的，希望能够尽我所能使得此博客能够持续的久一些。
-&amp;emsp;2016，上半年年读了几本书，看了一些电影，也时常做运动，下半年由于">
+<meta name="description" content="前言对于我这样普通程序员来说，想获取可观的免费数据，最直接的办法就是爬虫了。正好刚学node.js不久，写一个简单的爬虫练练手。废话不多说，直奔主题。
+正文目标这次要爬的是煎蛋网，找出妹子图2016年度最受欢迎的(oo数量最多的)十张图片。
+用到的模块SuperAgent – 用此来获得网页信息cheerio – nodejs版的JQuery
+具体流程编写代码前，先打开Chrome分析一下页面源代">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2017 Hello World">
-<meta property="og:url" content="http://www.rengzn.com/hello2017.html">
+<meta property="og:title" content="node.js 使用superagent与cheerio写爬虫，福利贴">
+<meta property="og:url" content="http://www.rengzn.com/scraperone.html">
 <meta property="og:site_name" content="人工智能现场">
-<meta property="og:description" content="&amp;emsp;2016年底的时候开始做一些网站相关的工作。大学毕业三年多了，一直在做移动端的app，此时接触js，有一种从孤岛回到大陆的感觉。也因此建立了这个博客。以后我会将平时的一些想法和工作纪录到这里。由于我天生三分钟热度的性格，可以预见此博客前景叵测。但希望总是美好的，希望能够尽我所能使得此博客能够持续的久一些。
-&amp;emsp;2016，上半年年读了几本书，看了一些电影，也时常做运动，下半年由于">
-<meta property="og:updated_time" content="2017-01-26T02:48:23.619Z">
+<meta property="og:description" content="前言对于我这样普通程序员来说，想获取可观的免费数据，最直接的办法就是爬虫了。正好刚学node.js不久，写一个简单的爬虫练练手。废话不多说，直奔主题。
+正文目标这次要爬的是煎蛋网，找出妹子图2016年度最受欢迎的(oo数量最多的)十张图片。
+用到的模块SuperAgent – 用此来获得网页信息cheerio – nodejs版的JQuery
+具体流程编写代码前，先打开Chrome分析一下页面源代">
+<meta property="og:image" content="http://www.rengzn.com/upload/nodescraperimage1.png">
+<meta property="og:image" content="http://ww2.sinaimg.cn/mw600/83f596c9gw1f88zlbqypcj20ia0qn41r.jpg">
+<meta property="og:updated_time" content="2017-02-01T08:17:19.028Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2017 Hello World">
-<meta name="twitter:description" content="&amp;emsp;2016年底的时候开始做一些网站相关的工作。大学毕业三年多了，一直在做移动端的app，此时接触js，有一种从孤岛回到大陆的感觉。也因此建立了这个博客。以后我会将平时的一些想法和工作纪录到这里。由于我天生三分钟热度的性格，可以预见此博客前景叵测。但希望总是美好的，希望能够尽我所能使得此博客能够持续的久一些。
-&amp;emsp;2016，上半年年读了几本书，看了一些电影，也时常做运动，下半年由于">
+<meta name="twitter:title" content="node.js 使用superagent与cheerio写爬虫，福利贴">
+<meta name="twitter:description" content="前言对于我这样普通程序员来说，想获取可观的免费数据，最直接的办法就是爬虫了。正好刚学node.js不久，写一个简单的爬虫练练手。废话不多说，直奔主题。
+正文目标这次要爬的是煎蛋网，找出妹子图2016年度最受欢迎的(oo数量最多的)十张图片。
+用到的模块SuperAgent – 用此来获得网页信息cheerio – nodejs版的JQuery
+具体流程编写代码前，先打开Chrome分析一下页面源代">
+<meta name="twitter:image" content="http://www.rengzn.com/upload/nodescraperimage1.png">
 
 
 
@@ -124,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://www.rengzn.com/hello2017.html"/>
+  <link rel="canonical" href="http://www.rengzn.com/scraperone.html"/>
 
 
 
 
 
-  <title> 2017 Hello World | 人工智能现场 </title>
+  <title> node.js 使用superagent与cheerio写爬虫，福利贴 | 人工智能现场 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -282,7 +291,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.rengzn.com/hello2017.html">
+  <link itemprop="mainEntityOfPage" href="http://www.rengzn.com/scraperone.html">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Zhongkang">
@@ -306,7 +315,7 @@
             
             
               
-                2017 Hello World
+                node.js 使用superagent与cheerio写爬虫，福利贴
               
             
           </h1>
@@ -321,8 +330,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-23T22:41:19+00:00">
-                2017-01-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-31T20:30:07+00:00">
+                2017-02-01
               </time>
             
 
@@ -344,8 +353,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/闲谈/" itemprop="url" rel="index">
-                    <span itemprop="name">闲谈</span>
+                  <a href="/categories/node-js/" itemprop="url" rel="index">
+                    <span itemprop="name">node.js</span>
                   </a>
                 </span>
 
@@ -362,8 +371,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/hello2017.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="hello2017.html" itemprop="commentCount"></span>
+                <a href="/scraperone.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="scraperone.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -389,11 +398,13 @@
       
 
       
-        <p>&emsp;2016年底的时候开始做一些网站相关的工作。大学毕业三年多了，一直在做移动端的app，此时接触js，有一种从孤岛回到大陆的感觉。也因此建立了这个博客。以后我会将平时的一些想法和工作纪录到这里。由于我天生三分钟热度的性格，可以预见此博客前景叵测。但希望总是美好的，希望能够尽我所能使得此博客能够持续的久一些。</p>
-<p>&emsp;2016，上半年年读了几本书，看了一些电影，也时常做运动，下半年由于工作变忙，这些都暂停了。现在体重又回到了16年初的水平。读过的书可以记得主要内容的也依稀只剩下几本。电影也是这样。做app这么久了，也终于发布了属于自己的app，<a href="https://itunes.apple.com/sc/app/badminton-clans/id1180856470?mt=8" target="_blank" rel="external">Badminton Clans</a>，虽然现在还几乎没人用，也总算对自己有个交代。</p>
-<p>&emsp;2017，看书看电影运动都要继续。从<a href="https://www.amazon.com/" target="_blank" rel="external">亚马逊</a>上买了一本书<a href="https://book.douban.com/subject/26708119/" target="_blank" rel="external">机器学习</a>，争取上半年读完。现在对于nodejs，爬虫，机器学习很感兴趣。会更多的关注这些方面的事情。</p>
-<h4 id="黄金时代-王小波"><a href="#黄金时代-王小波" class="headerlink" title="黄金时代 王小波"></a><a href="https://book.douban.com/subject/6902318/" title="豆瓣读书" target="_blank" rel="external">黄金时代</a> 王小波</h4><p>刚读完时，我是想写个书评来着。后来发现网上的关于此书评实在太多，无论写的多好多坏，差不多就是在中间。所以我就不写了。况且我和这本小说之间的伟大友谊并不是悬系在这可有可无的书评上面。我一字一句的读过，想过，这也足够了。就像若干年后王二和陈清扬还是可以相约在小旅馆。若干时间之后，我也可以再读一遍，如果到时内心的激动还是没有退却，我还可以读很多遍。</p>
-<h4 id="侠僧探案传奇"><a href="#侠僧探案传奇" class="headerlink" title="侠僧探案传奇"></a><a href="https://movie.douban.com/subject/26301742/" title="豆瓣电影" target="_blank" rel="external">侠僧探案传奇</a></h4><p>我一向是容易被虚假的事物所感动的，只要在电影院看的电影都觉得是好电影。但记性却不好，没过一会儿这种感动就忘了。2016在电影院里看的电影都是这样。在十月的时候，在网上偶然发现了这一系列电影，侠僧探案传奇。看过第一部觉得还不错，就接二连三的看完了其余的几部。电影本身给我的感觉就是真。真，是我在2016重新认识的一个字。一个事物分好坏，但随着时间环境的改变，好坏也很容易随之改变。我觉得真假是比好坏保质期长很多的形容词。我说这部电影真，包括演员，音乐，情节，包括大结局的彩蛋，我都认为很真诚。这让我想起小的时候从报纸上看节目预告，然后守在电视旁等待想看的电影的时候。那时候电影频道上播的电影没有小鲜肉，没有广告植入，很少卖弄情怀，都是演员没有明星，都很真。</p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>对于我这样普通程序员来说，想获取可观的免费数据，最直接的办法就是爬虫了。正好刚学node.js不久，写一个简单的爬虫练练手。废话不多说，直奔主题。</p>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><h5 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h5><p>这次要爬的是煎蛋网，找出妹子图2016年度最受欢迎的(oo数量最多的)十张图片。</p>
+<h5 id="用到的模块"><a href="#用到的模块" class="headerlink" title="用到的模块"></a>用到的模块</h5><p>SuperAgent – 用此来获得网页信息<br>cheerio – nodejs版的JQuery</p>
+<h5 id="具体流程"><a href="#具体流程" class="headerlink" title="具体流程"></a>具体流程</h5><p>编写代码前，先打开Chrome分析一下页面源代码 <a href="https://i.jandan.net/ooxx/" title="简单网妹子图" target="_blank" rel="external">https://i.jandan.net/ooxx/</a><br><img src="/upload/nodescraperimage1.png" alt=""><br>现在开始写我们的程序，创建一个文件夹，进去之后<br><code>npm init</code> ，填上基本信息之后<br><code>npm install superagent cheerio  --save</code><br>新建一个app.js，就可以编写我们的代码逻辑了。  </p>
+<h5 id="核心代码"><a href="#核心代码" class="headerlink" title="核心代码"></a>核心代码</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">var topten = [&#123; author : &apos;&apos;, date : &apos;&apos;,year:&apos;&apos;, oo : 0, xx: 0 , url:&apos;&apos;&#125;]//需要获取的数据结构  </div><div class="line">var page = 2300 //从2300页开始爬</div><div class="line">var bcontinue = true</div><div class="line"></div><div class="line">getSeeds = function(url)&#123;</div><div class="line">    superagent.get(&apos;http://i.jandan.net/ooxx/page-&apos;+url)    </div><div class="line">      .end(function(err,docs)&#123; //通过superagent获取网页数据</div><div class="line">        page-- </div><div class="line">        if(!err)&#123;</div><div class="line">            console.log(page)</div><div class="line">            var $ = cheerio.load(docs.text)  //使用cheerio解析数据</div><div class="line">            $(&apos;.commentlist li&apos;).each(function()&#123;</div><div class="line">                var json = &#123; author:&apos;&apos;, year:&apos;&apos;, date:&apos;&apos;, oo:0, xx:0, url:&apos;&apos;&#125;;</div><div class="line">                var data = $(this);</div><div class="line">    	        json.date = data.children().eq(1).text()</div><div class="line">    	        json.year = json.date.substring(2, 6)</div><div class="line">         </div><div class="line">                if(json.year == &apos;2016&apos;)&#123; //存储2016年的妹子图</div><div class="line">                    json.oo = parseInt(data.find(&quot;*[id*=&apos;cos_support&apos;]&quot;).text())</div><div class="line">                    json.author = data.children().first().text()</div><div class="line">                    json.xx = parseInt(data.find(&quot;*[id*=&apos;cos_unsupport&apos;]&quot;).text())</div><div class="line">                    json.url = data.find(&apos;.commenttext p img&apos;).attr(&apos;src&apos;)</div><div class="line"></div><div class="line">                    var lastone = topten[topten.length-1] //只保存oo次数最多的十张图  </div><div class="line">                    if(lastone.oo &lt; json.oo)&#123;</div><div class="line">                        topten.push(json)</div><div class="line">                        topten.sort(function(a, b) &#123; return b.oo - a.oo &#125;);</div><div class="line">                        if(topten.length&gt;10)&#123;</div><div class="line">                            topten.pop() </div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                if(json.year == &apos;2015&apos;)&#123;</div><div class="line">                    bcontinue = false</div><div class="line">                &#125; </div><div class="line">            &#125;)</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        if (bcontinue)&#123;</div><div class="line">            getSeeds(page)</div><div class="line">        &#125;else&#123;</div><div class="line">            console.log(topten)</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h5 id="爬到的结果"><a href="#爬到的结果" class="headerlink" title="爬到的结果"></a>爬到的结果</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[ &#123; author: &apos;Kill&apos;,</div><div class="line">    year: &apos;2016&apos;,</div><div class="line">    date: &apos;@ 2016-09-20 17:47:07&apos;,</div><div class="line">    oo: 1949,</div><div class="line">    xx: 53,</div><div class="line">    url: &apos;//ww3.sinaimg.cn/thumb180/0064r0Mujw1f1sb5tt0aug30b4068x6p.gif&apos; &#125;,</div><div class="line">  &#123; author: &apos;wjking512&apos;,</div><div class="line">    year: &apos;2016&apos;,</div><div class="line">    date: &apos;@ 2016-12-27 02:59:24&apos;,</div><div class="line">    oo: 1815,</div><div class="line">    xx: 75,</div><div class="line">    url: &apos;//ww1.sinaimg.cn/mw600/9b17754bjw1e534athnt4j20m80kgtd1.jpg&apos; &#125;,...</div></pre></td></tr></table></figure>
+<h5 id="说好的福利"><a href="#说好的福利" class="headerlink" title="说好的福利"></a>说好的福利</h5><h6 id="前三名"><a href="#前三名" class="headerlink" title="前三名"></a>前三名</h6><p><img src="http://ww2.sinaimg.cn/mw600/83f596c9gw1f88zlbqypcj20ia0qn41r.jpg" alt="">  </p>
 
       
     </div>
@@ -415,20 +426,26 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/爬虫/" rel="tag"># 爬虫</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/hello2017.html" rel="next" title="2017 Hello World">
+                <i class="fa fa-chevron-left"></i> 2017 Hello World
+              </a>
             
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/scraperone.html" rel="prev" title="node.js 使用superagent与cheerio写爬虫，福利贴">
-                node.js 使用superagent与cheerio写爬虫，福利贴 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -454,8 +471,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="hello2017.html"
-           data-title="2017 Hello World" data-url="http://www.rengzn.com/hello2017.html">
+      <div class="ds-thread" data-thread-key="scraperone.html"
+           data-title="node.js 使用superagent与cheerio写爬虫，福利贴" data-url="http://www.rengzn.com/scraperone.html">
       </div>
     
   </div>
@@ -555,7 +572,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#黄金时代-王小波"><span class="nav-number">1.</span> <span class="nav-text">黄金时代 王小波</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#侠僧探案传奇"><span class="nav-number">2.</span> <span class="nav-text">侠僧探案传奇</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#目标"><span class="nav-number">2.0.1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用到的模块"><span class="nav-number">2.0.2.</span> <span class="nav-text">用到的模块</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#具体流程"><span class="nav-number">2.0.3.</span> <span class="nav-text">具体流程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#核心代码"><span class="nav-number">2.0.4.</span> <span class="nav-text">核心代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#爬到的结果"><span class="nav-number">2.0.5.</span> <span class="nav-text">爬到的结果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#说好的福利"><span class="nav-number">2.0.6.</span> <span class="nav-text">说好的福利</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#前三名"><span class="nav-number">2.0.6.1.</span> <span class="nav-text">前三名</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
