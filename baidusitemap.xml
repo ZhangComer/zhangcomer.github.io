@@ -4,8 +4,25 @@
 
     
   <url>
+    <loc>http://www.rengzn.com/scrapertwo.html</loc>
+    <lastmod>2017-02-02T08:53:38.076Z</lastmod>
+    <data>
+        <display>
+        <title>node.js 使用superagent,cheerio与async写爬虫(二)</title>
+        <pubTime>2017-02-01T23:59:43.000Z</pubTime>
+        
+        <tag>爬虫</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.rengzn.com/scraperone.html</loc>
-    <lastmod>2017-02-01T08:38:16.885Z</lastmod>
+    <lastmod>2017-02-02T08:47:21.621Z</lastmod>
     <data>
         <display>
         <title>node.js 使用superagent与cheerio写爬虫，福利贴</title>
