@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="node.js, superagent, cheerio, scraper, 爬虫, 妹子, 煎蛋网, ooxx" />
+  <meta name="keywords" content="node.js,马蜂窝 ,ajax ,superagent, cheerio, scraper, 爬虫" />
 
 
 
@@ -84,28 +84,26 @@
 
 
 
-<meta name="description" content="前言对于我这样普通程序员来说，想获取可观的免费数据，最直接的办法就是爬虫了。正好刚学node.js不久，写一个简单的爬虫练练手。废话不多说，直奔主题。
-正文目标这次要爬的是煎蛋网，找出妹子图2016年度最受欢迎的(oo数量最多的)十张图片。
-用到的模块SuperAgent – 用此来获得网页信息cheerio – nodejs版的JQuery
-具体流程编写代码前，先打开Chrome分析一下页面源代">
+<meta name="description" content="前言之前写的爬虫都是直接获取网页内容，解析保存需求数据。然而我后来又遇到一些网页数据使用Ajax获取的，数据不存在于网页的源代码。(高手大神请无视我的见识浅薄) 后来经过学习，终于搞明白这类的网页怎么抓去信息。废话不多说，我们就以马蜂窝为例，做一个简单爬虫。
+目标马蜂窝爬取北京的热门景点。
+具体流程编写代码前，先来到这个网页 http://www.mafengwo.cn/jd/10065/gong">
 <meta property="og:type" content="article">
-<meta property="og:title" content="node.js 使用superagent与cheerio写爬虫，福利贴">
-<meta property="og:url" content="http://www.rengzn.com/scraperone.html">
+<meta property="og:title" content="node.js写马蜂窝爬虫 有关ajax">
+<meta property="og:url" content="http://www.rengzn.com/scraperthree.html">
 <meta property="og:site_name" content="人工智能现场">
-<meta property="og:description" content="前言对于我这样普通程序员来说，想获取可观的免费数据，最直接的办法就是爬虫了。正好刚学node.js不久，写一个简单的爬虫练练手。废话不多说，直奔主题。
-正文目标这次要爬的是煎蛋网，找出妹子图2016年度最受欢迎的(oo数量最多的)十张图片。
-用到的模块SuperAgent – 用此来获得网页信息cheerio – nodejs版的JQuery
-具体流程编写代码前，先打开Chrome分析一下页面源代">
-<meta property="og:image" content="http://www.rengzn.com/upload/nodescraperimage1.png">
-<meta property="og:image" content="http://ww2.sinaimg.cn/mw600/83f596c9gw1f88zlbqypcj20ia0qn41r.jpg">
-<meta property="og:updated_time" content="2017-02-02T08:47:21.621Z">
+<meta property="og:description" content="前言之前写的爬虫都是直接获取网页内容，解析保存需求数据。然而我后来又遇到一些网页数据使用Ajax获取的，数据不存在于网页的源代码。(高手大神请无视我的见识浅薄) 后来经过学习，终于搞明白这类的网页怎么抓去信息。废话不多说，我们就以马蜂窝为例，做一个简单爬虫。
+目标马蜂窝爬取北京的热门景点。
+具体流程编写代码前，先来到这个网页 http://www.mafengwo.cn/jd/10065/gong">
+<meta property="og:image" content="http://www.rengzn.com/upload/beijingimg.png">
+<meta property="og:image" content="http://www.rengzn.com/upload/beijingimg2.png">
+<meta property="og:image" content="http://www.rengzn.com/upload/myqr.jpg">
+<meta property="og:updated_time" content="2017-03-30T03:59:21.419Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="node.js 使用superagent与cheerio写爬虫，福利贴">
-<meta name="twitter:description" content="前言对于我这样普通程序员来说，想获取可观的免费数据，最直接的办法就是爬虫了。正好刚学node.js不久，写一个简单的爬虫练练手。废话不多说，直奔主题。
-正文目标这次要爬的是煎蛋网，找出妹子图2016年度最受欢迎的(oo数量最多的)十张图片。
-用到的模块SuperAgent – 用此来获得网页信息cheerio – nodejs版的JQuery
-具体流程编写代码前，先打开Chrome分析一下页面源代">
-<meta name="twitter:image" content="http://www.rengzn.com/upload/nodescraperimage1.png">
+<meta name="twitter:title" content="node.js写马蜂窝爬虫 有关ajax">
+<meta name="twitter:description" content="前言之前写的爬虫都是直接获取网页内容，解析保存需求数据。然而我后来又遇到一些网页数据使用Ajax获取的，数据不存在于网页的源代码。(高手大神请无视我的见识浅薄) 后来经过学习，终于搞明白这类的网页怎么抓去信息。废话不多说，我们就以马蜂窝为例，做一个简单爬虫。
+目标马蜂窝爬取北京的热门景点。
+具体流程编写代码前，先来到这个网页 http://www.mafengwo.cn/jd/10065/gong">
+<meta name="twitter:image" content="http://www.rengzn.com/upload/beijingimg.png">
 
 
 
@@ -133,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://www.rengzn.com/scraperone.html"/>
+  <link rel="canonical" href="http://www.rengzn.com/scraperthree.html"/>
 
 
 
 
 
-  <title> node.js 使用superagent与cheerio写爬虫，福利贴 | 人工智能现场 </title>
+  <title> node.js写马蜂窝爬虫 有关ajax | 人工智能现场 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -291,7 +289,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.rengzn.com/scraperone.html">
+  <link itemprop="mainEntityOfPage" href="http://www.rengzn.com/scraperthree.html">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Zhongkang">
@@ -315,7 +313,7 @@
             
             
               
-                node.js 使用superagent与cheerio写爬虫，福利贴
+                node.js写马蜂窝爬虫 有关ajax
               
             
           </h1>
@@ -330,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-31T20:30:07+00:00">
-                2017-02-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-30T03:14:27+08:00">
+                2017-03-30
               </time>
             
 
@@ -341,28 +339,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/node-js/" itemprop="url" rel="index">
-                    <span itemprop="name">node.js</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -371,8 +347,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/scraperone.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="scraperone.html" itemprop="commentCount"></span>
+                <a href="/scraperthree.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="scraperthree.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -403,13 +379,12 @@
       
 
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>对于我这样普通程序员来说，想获取可观的免费数据，最直接的办法就是爬虫了。正好刚学node.js不久，写一个简单的爬虫练练手。废话不多说，直奔主题。</p>
-<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><p>这次要爬的是煎蛋网，找出妹子图2016年度最受欢迎的(oo数量最多的)十张图片。</p>
-<h4 id="用到的模块"><a href="#用到的模块" class="headerlink" title="用到的模块"></a>用到的模块</h4><p>SuperAgent – 用此来获得网页信息<br>cheerio – nodejs版的JQuery</p>
-<h4 id="具体流程"><a href="#具体流程" class="headerlink" title="具体流程"></a>具体流程</h4><p>编写代码前，先打开Chrome分析一下页面源代码 <a href="https://i.jandan.net/ooxx/" title="简单网妹子图" target="_blank" rel="external">https://i.jandan.net/ooxx/</a><br><img src="/upload/nodescraperimage1.png" alt=""><br>现在开始写我们的程序，创建一个文件夹，进去之后<br><code>npm init</code> ，填上基本信息之后<br><code>npm install superagent cheerio  --save</code><br>新建一个app.js，就可以编写我们的代码逻辑了。<br>查看全部代码 <a href="https://github.com/ZhangComer/nodeJs-scraper" target="_blank" rel="external">github</a></p>
-<h4 id="核心代码"><a href="#核心代码" class="headerlink" title="核心代码"></a>核心代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">var topten = [&#123; author : &apos;&apos;, date : &apos;&apos;,year:&apos;&apos;, oo : 0, xx: 0 , url:&apos;&apos;&#125;]//需要获取的数据结构  </div><div class="line">var page = 2300 //从2300页开始爬</div><div class="line">var bcontinue = true</div><div class="line"></div><div class="line">getSeeds = function(url)&#123;</div><div class="line">    superagent.get(&apos;http://i.jandan.net/ooxx/page-&apos;+url)    </div><div class="line">      .end(function(err,docs)&#123; //通过superagent获取网页数据</div><div class="line">        page-- </div><div class="line">        if(!err)&#123;</div><div class="line">            console.log(page)</div><div class="line">            var $ = cheerio.load(docs.text)  //使用cheerio解析数据</div><div class="line">            $(&apos;.commentlist li&apos;).each(function()&#123;</div><div class="line">                var json = &#123; author:&apos;&apos;, year:&apos;&apos;, date:&apos;&apos;, oo:0, xx:0, url:&apos;&apos;&#125;;</div><div class="line">                var data = $(this);</div><div class="line">    	        json.date = data.children().eq(1).text()</div><div class="line">    	        json.year = json.date.substring(2, 6)</div><div class="line">         </div><div class="line">                if(json.year == &apos;2016&apos;)&#123; //存储2016年的妹子图</div><div class="line">                    json.oo = parseInt(data.find(&quot;*[id*=&apos;cos_support&apos;]&quot;).text())</div><div class="line">                    json.author = data.children().first().text()</div><div class="line">                    json.xx = parseInt(data.find(&quot;*[id*=&apos;cos_unsupport&apos;]&quot;).text())</div><div class="line">                    json.url = data.find(&apos;.commenttext p img&apos;).attr(&apos;src&apos;)</div><div class="line"></div><div class="line">                    var lastone = topten[topten.length-1] //只保存oo次数最多的十张图  </div><div class="line">                    if(lastone.oo &lt; json.oo)&#123;</div><div class="line">                        topten.push(json)</div><div class="line">                        topten.sort(function(a, b) &#123; return b.oo - a.oo &#125;);</div><div class="line">                        if(topten.length&gt;10)&#123;</div><div class="line">                            topten.pop() </div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                if(json.year == &apos;2015&apos;)&#123;</div><div class="line">                    bcontinue = false</div><div class="line">                &#125; </div><div class="line">            &#125;)</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        if (bcontinue)&#123;</div><div class="line">            getSeeds(page)</div><div class="line">        &#125;else&#123;</div><div class="line">            console.log(topten)</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h4 id="爬到的结果"><a href="#爬到的结果" class="headerlink" title="爬到的结果"></a>爬到的结果</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[ &#123; author: &apos;Kill&apos;,</div><div class="line">    year: &apos;2016&apos;,</div><div class="line">    date: &apos;@ 2016-09-20 17:47:07&apos;,</div><div class="line">    oo: 1949,</div><div class="line">    xx: 53,</div><div class="line">    url: &apos;//ww3.sinaimg.cn/thumb180/0064r0Mujw1f1sb5tt0aug30b4068x6p.gif&apos; &#125;,</div><div class="line">  &#123; author: &apos;wjking512&apos;,</div><div class="line">    year: &apos;2016&apos;,</div><div class="line">    date: &apos;@ 2016-12-27 02:59:24&apos;,</div><div class="line">    oo: 1815,</div><div class="line">    xx: 75,</div><div class="line">    url: &apos;//ww1.sinaimg.cn/mw600/9b17754bjw1e534athnt4j20m80kgtd1.jpg&apos; &#125;,...</div></pre></td></tr></table></figure>
-<h4 id="说好的福利"><a href="#说好的福利" class="headerlink" title="说好的福利"></a>说好的福利</h4><h5 id="前三名"><a href="#前三名" class="headerlink" title="前三名"></a>前三名</h5><p><img src="http://ww2.sinaimg.cn/mw600/83f596c9gw1f88zlbqypcj20ia0qn41r.jpg" alt="">  </p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>之前写的爬虫都是直接获取网页内容，解析保存需求数据。然而我后来又遇到一些网页数据使用Ajax获取的，数据不存在于网页的源代码。(高手大神请无视我的见识浅薄) 后来经过学习，终于搞明白这类的网页怎么抓去信息。废话不多说，我们就以马蜂窝为例，做一个简单爬虫。</p>
+<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>马蜂窝爬取北京的热门景点。</p>
+<h3 id="具体流程"><a href="#具体流程" class="headerlink" title="具体流程"></a>具体流程</h3><p>编写代码前，先来到这个网页 <a href="http://www.mafengwo.cn/jd/10065/gonglve.html" title="马蜂窝北京景点页面" target="_blank" rel="external">http://www.mafengwo.cn/jd/10065/gonglve.html</a> 最下面北京全部景点模块。<br><img src="/upload/beijingimg.png" alt=""><br>打开chrome inspect under network 是这样的<br><img src="/upload/beijingimg2.png" alt=""><br>看到这里就可以开始写代码了   </p>
+<h3 id="核心代码"><a href="#核心代码" class="headerlink" title="核心代码"></a>核心代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">attractionsList = function(i,cityname)&#123;</div><div class="line"></div><div class="line">    superagent</div><div class="line">    .post(&apos;http://www.mafengwo.cn/ajax/router.php&apos;)</div><div class="line">    .type(&apos;form&apos;)</div><div class="line">    .send(&#123;</div><div class="line">        &apos;sAct&apos;:&apos;KMdd_StructWebAjax|GetPoisByTag&apos;,</div><div class="line">        &apos;iMddid&apos;:10065,</div><div class="line">        &apos;iTagId&apos;:0,</div><div class="line">        &apos;iPage&apos;:i,</div><div class="line">      &#125;)</div><div class="line">    .set(&apos;User-Agent&apos;, &apos;Mozilla/5.0&apos;)</div><div class="line">    .end(function(err, res)&#123;</div><div class="line">    </div><div class="line">         var jsonstring = JSON.parse(res.text);</div><div class="line">         var $ = cheerio.load(jsonstring.data.list)  </div><div class="line"></div><div class="line">         $(&apos;li&apos;).each(function()&#123;</div><div class="line"></div><div class="line">             var data = $(this);</div><div class="line">             var href  = data.find(&apos;a&apos;).attr(&apos;href&apos;);</div><div class="line">             var title  = data.find(&apos;a&apos;).attr(&apos;title&apos;);</div><div class="line"></div><div class="line">             superagent.get(&apos;http://www.mafengwo.cn&apos;+href)    </div><div class="line">               .end(function(err,docs)&#123; </div><div class="line">                 if(!err)&#123;</div><div class="line">                     var $ = cheerio.load(docs.text)  </div><div class="line">                     var summary = $(&apos;div.summary&apos;).text()</div><div class="line">                     console.log(title);</div><div class="line">                     console.log(summary);</div><div class="line">                    &#125;</div><div class="line">                &#125;)</div><div class="line"></div><div class="line">            &#125;)</div><div class="line"></div><div class="line">         var $$ = cheerio.load(jsonstring.data.page);</div><div class="line">         if ($$(&apos;a.pi.pg-next&apos;).length) &#123;</div><div class="line">             getList(i+1,cityname)</div><div class="line">         &#125;;   </div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这段代码是获取景点列表后，去景点的详细界面获取景点简介。需要注意的是，爬马蜂窝并发的线程不能太多，否则会被封ip，哈哈。</p>
+<h4 id="交友"><a href="#交友" class="headerlink" title="交友"></a>交友</h4><p>对互联网技术 机器学习 电影 热门游戏 及其它感兴趣的小伙伴可以加我微信好友。大家一起进步，哈哈。<br><img src="/upload/myqr.jpg" alt=""> </p>
 
       
     </div>
@@ -458,8 +433,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/hello2017.html" rel="next" title="2017 Hello World">
-                <i class="fa fa-chevron-left"></i> 2017 Hello World
+              <a href="/scrapertwo.html" rel="next" title="node.js 使用superagent,cheerio与async写爬虫(二)">
+                <i class="fa fa-chevron-left"></i> node.js 使用superagent,cheerio与async写爬虫(二)
               </a>
             
           </div>
@@ -467,10 +442,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/scrapertwo.html" rel="prev" title="node.js 使用superagent,cheerio与async写爬虫(二)">
-                node.js 使用superagent,cheerio与async写爬虫(二) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -496,8 +467,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="scraperone.html"
-           data-title="node.js 使用superagent与cheerio写爬虫，福利贴" data-url="http://www.rengzn.com/scraperone.html">
+      <div class="ds-thread" data-thread-key="scraperthree.html"
+           data-title="node.js写马蜂窝爬虫 有关ajax" data-url="http://www.rengzn.com/scraperthree.html">
       </div>
     
   </div>
@@ -597,7 +568,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#目标"><span class="nav-number">2.1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用到的模块"><span class="nav-number">2.2.</span> <span class="nav-text">用到的模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#具体流程"><span class="nav-number">2.3.</span> <span class="nav-text">具体流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#核心代码"><span class="nav-number">2.4.</span> <span class="nav-text">核心代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#爬到的结果"><span class="nav-number">2.5.</span> <span class="nav-text">爬到的结果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#说好的福利"><span class="nav-number">2.6.</span> <span class="nav-text">说好的福利</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#前三名"><span class="nav-number">2.6.1.</span> <span class="nav-text">前三名</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目标"><span class="nav-number">2.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#具体流程"><span class="nav-number">3.</span> <span class="nav-text">具体流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核心代码"><span class="nav-number">4.</span> <span class="nav-text">核心代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#交友"><span class="nav-number">4.1.</span> <span class="nav-text">交友</span></a></li></ol></li></ol></div>
             
 
           </div>
